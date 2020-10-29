@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if user.update(users_params)
         redirect_to user_url(user) # render json: user
     else 
-        render json: users.errors.full_messages, status: 422
+        render json: user.errors.full_messages, status: 422
     end
   end
 
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   private
   def users_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username)
   end
 
 end
